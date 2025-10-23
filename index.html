@@ -1,187 +1,416 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mythology Stories</title>
-  <link rel="manifest" href="manifest.json"> 
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Family Tree — Vertical</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#f8b500">
+
   <style>
-    /* --- Body and layout --- */
-    body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh; /* full viewport height */
-      background: linear-gradient(135deg, #fff4e6, #ffe0cc);
-      color: #333;
-      /* Prevent text selection */
-        user-select: none;
-
-      /* Vendor prefixes for older browsers */
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
+    :root{
+      --bg-a: linear-gradient(135deg,#f7f7f9,#f1f6ff);
+      --card-bg:#ffffff;
+      --accent:#f08a5d;
+      --photo-size:84px;
+      --ring-width:6px;
+      --font:'Segoe UI', Roboto, Arial, sans-serif;
     }
-
-    /* --- Header --- */
-    header {
-      text-align: center;
-      padding: 20px;
-      background: #8b0000;
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:var(--font);
+      background: var(--bg-a);
+      color:#222;
     }
-
-    /* --- Main content --- */
+    header{
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.06);
+      background:linear-gradient(90deg,#111827,#0f172a);
+      color:white;
+    }
+    header .title{
+      font-size:20px;
+      font-weight:700;
+      letter-spacing:0.2px;
+    }
     main {
-      flex: 1; /* main content takes remaining space */
-      padding: 20px;
+        height: calc(100vh - 72px);
+        overflow: auto;              /* scroll both ways */
+        position: relative;
+        }
+
+    /* A true scrollable layer that can extend both directions */
+    .scroll-wrap {
+        display: inline-block;       /* natural width expansion */
+        padding: 30px 80px;
+        position: relative;
+        min-width: max-content;
     }
 
-    .story-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    /* tree area */
+    /* Keep your existing .tree-root, but remove flex centering from it */
+    .tree-root {
+        display: inline-block;
+        position: relative;
+        }
+
+
+    /* each node container (vertical flow) */
+    .person-node{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      position:relative;
+      min-width:160px;
     }
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
+    /* couple wrapper: two person cards side-by-side with heart between */
+    .couple{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:rgba(255,255,255,0.9);
+      padding:10px 14px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(12,18,25,0.06);
+      border:2px solid rgba(0,0,0,0.04);
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    .person-card{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+      min-width:110px;
+      text-align:center;
     }
 
-    .card h2 {
-      margin: 0;
-      font-size: 1.2rem;
-      color: #8b0000;
+    /* placeholder circular photo and ring */
+    .photo{
+      width:var(--photo-size);
+      height:var(--photo-size);
+      border-radius:50%;
+      display:inline-block;
+      box-sizing:content-box;
+      position:relative;
+      flex-shrink:0;
+      background-size:cover;
+      background-position:center;
+    }
+    /* ring wrapper to set border color dynamically */
+    .photo.ring{
+      padding: var(--ring-width);
+      border-radius:999px;
+      background-clip:padding-box;
     }
 
-    .card p {
-      margin: 8px 0 0;
-      font-size: 0.9rem;
-      color: #666;
+    .name{
+      font-weight:700;
+      font-size:14px;
+      color:#0b1220;
+    }
+    .life{
+      font-size:12px;
+      color:#6b7280;
     }
 
-    /* --- Footer --- */
-    footer {
-      text-align: center;
-      padding: 12px 0;
-      font-size: 0.85rem;
-      color: #555;
-      background: #fff4e6; /* soft matching background */
-      border-top: 1px solid #e0c8b0;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+    /* children group displayed below parents */
+    .children{
+      margin-top:26px;
+      display:flex;
+      gap:36px;
+      align-items:flex-start;
+      justify-content:center;
+      position:relative;
     }
 
-    footer p {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
+    /* small heart between couple */
+    .heart{
+      width:18px;
+      height:18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      color:#ff6b6b;
+      font-size:14px;
     }
 
-    .share-btn {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 8px 14px;
-      background: #25D366; /* WhatsApp green */
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: background 0.2s ease;
+    /* collapse button small badge (optional) */
+    .collapse-btn{
+      position:absolute;
+      right: -12px;
+      top: 6px;
+      background:#fff;
+      border-radius:999px;
+      padding:6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      cursor:pointer;
+      font-size:12px;
+      border:1px solid rgba(0,0,0,0.06);
     }
-    .share-btn:hover {
-      background: #1da851;
+
+    /* svg lines layer covers entire tree container */
+    svg.lines{
+      position:absolute;
+      top:0; left:0;
+      pointer-events:none;
+      overflow:visible;
+      width:100%;
+      height:100%;
+    }
+
+    /* generation color legend (small) */
+    .legend{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+      color:#374151;
+    }
+    .legend .chip{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      background:rgba(255,255,255,0.9);
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,0.04);
+      font-size:13px;
+    }
+
+    /* responsive tweaks */
+    @media (max-width:900px){
+      .tree-root{ padding:20px; min-width:800px; }
+      .person-node{ min-width:140px; }
     }
   </style>
 </head>
 <body>
-  <header>📖 Mythology Stories</header>
+  <header>
+    <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg,#6d28d9,#34d399);display:flex;align-items:center;justify-content:center;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5c2 0 3 1 4 2 1 1 2 2 2 4s-1 3-2 4-3 2-4 2-3-1-4-2-2-2-2-4 1-3 2-4 2-2 4-2z" stroke="#fff" stroke-width="1.2"/></svg>
+    </div>
+    <div class="title" style="flex: 1; text-align: center;">The Family Tree</div>
+    <div style="flex:1"></div>
+  </header>
 
   <main>
-    <section class="story-list">
-      <div class="card" onclick="goToLanguagePage('ramayana')">
-        <h2>रामायण</h2>
-        <p>Ramayana (Available)</p>
-      </div>
-      <div class="card" onclick="goToLanguagePage('bhagavadGita')">
-        <h2>भगवद्गीता</h2>
-        <p>Bhagavad Gita (Coming Soon)</p>
-      </div>
-      <div class="card" onclick="goToLanguagePage('mahabharata')">
-        <h2>महाभारत</h2>
-        <p>Mahabharata (Coming Soon)</p>
-      </div>
-      <div class="card" onclick="goToLanguagePage('bhagavataPurana')">
-        <h2>भागवत पुराण</h2>
-        <p>Bhagavata Purana (Coming Soon)</p>
-      </div>
-      <div class="card" onclick="goToLanguagePage('shivaPurana')">
-        <h2>शिव पुराण</h2>
-        <p>Shiva Purana (Coming Soon)</p>
-      </div>
-      <div class="card" onclick="goToLanguagePage('vishnuPurana')">
-        <h2>विष्णु पुराण</h2>
-        <p>Vishnu Purana (Coming Soon)</p>
-      </div>
-      <div class="card" onclick="goToLanguagePage('deviBhagavataPurana')">
-        <h2>देवी भागवत पुराण</h2>
-        <p>Devi Bhagavata Purana (Coming Soon)</p>
-      </div>
-      <div class="card" onclick="goToLanguagePage('markandeyaPurana')">
-        <h2>मार्कण्डेय पुराण</h2>
-        <p>Markandeya Purana (Coming Soon)</p>
-      </div>
-      <div class="card" onclick="goToLanguagePage('skandaPurana')">
-        <h2>स्कन्द पुराण</h2>
-        <p>Skanda Purana (Coming Soon)</p>
-      </div>
-    </section>
+    <div class="legend" id="legend"></div>
+    <div class="scroll-wrap">
+    <div id="tree" class="tree-root">
+      <!-- dynamic content + svg lines injected here -->
+      <svg class="lines" id="linesSvg"></svg>
+    </div>
+    </div>
   </main>
 
-  <footer>
-    <p>© 2025 Mythology Stories | Developed by GK using AI</p>
-    <a href="https://wa.me/?text=📚%20Check%20out%20this%20Mythology%20Stories%20App!%20Install%20it%20here:%20https://mythology-stories.netlify.app/"
-	class="share-btn" target="_blank" rel="noopener">📤 Share via WhatsApp</a>
-  </footer>
+<script>
+/*
+  1) This script loads family.json (same folder) and renders a vertical tree.
+  2) Each node is a couple (husband/wife) and children appear below.
+  3) Color-coded rings assigned by branch index.
+  4) SVG lines connect parent center (below) to child center (top).
+*/
 
-  <script>
-    let deferredPrompt;
-    
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-    
-      // Create a custom Install button
-      const btn = document.createElement('button');
-      btn.textContent = "Install App";
-      btn.style.cssText = "position:fixed;bottom:20px;right:20px;padding:10px 15px;background:#8b0000;color:white;border:none;border-radius:8px;cursor:pointer;";
-      document.body.appendChild(btn);
-    
-      btn.addEventListener('click', () => {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(() => {
-          deferredPrompt = null;
-          btn.remove();
-        });
-      });
-    });
+const COLORS = [
+  '#3b82f6', // blue
+  '#10b981', // green
+  '#f97316', // orange
+  '#8b5cf6', // purple
+  '#ec4899', // pink
+  '#06b6d4', // teal
+  '#ef4444', // red
+  '#f59e0b'  // amber
+];
 
-    function goToLanguagePage(storyId) {
-      window.location.href = "language.html?story=" + storyId;
+// utility to create elements
+function el(tag, cls='', html=''){ const d=document.createElement(tag); if(cls) d.className=cls; if(html) d.innerHTML=html; return d; }
+
+// load JSON and render
+fetch('family.json').then(r=>{
+  if(!r.ok) throw new Error('Could not load family.json. Serve files over HTTP.');
+  return r.json();
+}).then(data=>{
+  const root = document.getElementById('tree');
+  // create legend
+  const legend = document.getElementById('legend');
+  for(let i=0;i<Math.min(6,COLORS.length);i++){
+    const chip = el('div','chip','<div style="width:14px;height:14px;border-radius:6px;background:'+COLORS[i]+'"></div> Branch '+(i+1));
+    legend.appendChild(chip);
+  }
+
+  // Render recursively; assign branch color index per top-level child
+  function renderPerson(person, branchColorIndex=0){
+    const node = el('div','person-node');
+
+    // couple / single
+    const couple = el('div','couple');
+
+    // helper to create person card
+    function personCard(p){
+      const pc = el('div','person-card');
+      // use placeholder image (you may replace url with real photo)
+      const placeholder = p.photo || ('https://via.placeholder.com/180x180.png?text=' + encodeURIComponent(p.name.split(' ')[0] || 'P'));
+      // ring wrapper (apply color)
+      const ring = el('div','photo ring');
+      ring.style.padding = 'var(--ring-width)';
+      ring.style.background = COLORS[branchColorIndex % COLORS.length];
+      const inner = el('div','photo');
+      inner.style.width = 'var(--photo-size)';
+      inner.style.height = 'var(--photo-size)';
+      inner.style.backgroundImage = 'url(' + placeholder + ')';
+      inner.style.borderRadius = '50%';
+      // create stacked structure: colored ring around inner image
+      ring.appendChild(inner);
+      pc.appendChild(ring);
+
+      const name = el('div','name', p.name || '');
+      pc.appendChild(name);
+      const life = el('div','life', (p.birth||'') + (p.death ? (' - '+p.death) : (p.birth ? ' - Present' : '')));
+      pc.appendChild(life);
+      return pc;
     }
-    </script>
+
+    // left: husband or single
+    if(person.husband){
+      couple.appendChild(personCard(person.husband));
+    } else if(person.name && !person.wife){
+      // single person stored directly
+      couple.appendChild(personCard({ name: person.name, birth: person.birth, death: person.death, photo: person.photo }));
+    }
+
+    // heart and spouse
+    if(person.husband && person.wife){
+      const heart = el('div','heart','❤');
+      couple.appendChild(heart);
+      couple.appendChild(personCard(person.wife));
+    } else if(person.wife && !person.husband){
+      couple.appendChild(personCard(person.wife));
+    }
+
+    node.appendChild(couple);
+
+    // children container
+    if(person.children && person.children.length>0){
+      const childrenWrap = el('div','children');
+      // each child inherits branch color index unless child defines a branch override
+      person.children.forEach((ch, idx) => {
+        // to have color-coded branches, if the parent has multiple children they get distinct colors
+        // compute child's branch index: parentIndex + idx (wrap if necessary)
+        const childBranchIndex = (branchColorIndex + idx) % COLORS.length;
+        const childNode = renderPerson(ch, childBranchIndex);
+        childrenWrap.appendChild(childNode);
+      });
+
+      // collapse toggle
+      const collapse = el('div','collapse-btn','−');
+      collapse.title = 'Collapse / Expand children';
+      collapse.onclick = (e)=>{
+        e.stopPropagation();
+        if(childrenWrap.style.display === 'none'){
+          childrenWrap.style.display = '';
+          collapse.innerText = '−';
+        } else {
+          childrenWrap.style.display = 'none';
+          collapse.innerText = '+';
+        }
+        // redraw lines after toggle
+        requestAnimationFrame(drawAllLines);
+      };
+      node.appendChild(collapse);
+      node.appendChild(childrenWrap);
+    }
+
+    // After rendering is done, call this to center the tree
+        setTimeout(() => {
+            const main = document.querySelector('main');
+            requestAnimationFrame(() => {
+            main.scrollLeft = (main.scrollWidth - main.clientWidth) / 2;
+            });
+        }, 100);
+
+    return node;
+  }
+
+  // Build DOM
+  const rootNode = renderPerson(data, 0);
+  root.appendChild(rootNode);
+
+  // draw lines
+  requestAnimationFrame(drawAllLines);
+}).catch(err=>{
+  document.getElementById('tree').innerText = 'Error loading family.json — '+err.message;
+});
+
+/* ---------- Drawing lines ---------- */
+function drawAllLines(){
+  const svg = document.getElementById('linesSvg');
+  // set svg size to container bounding box
+  const tree = document.getElementById('tree');
+  const rect = tree.getBoundingClientRect();
+  svg.setAttribute('width', rect.width);
+  svg.setAttribute('height', rect.height);
+  // clear
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+
+  // find all parent nodes that have a children container
+  const parentNodes = tree.querySelectorAll('.person-node');
+  parentNodes.forEach(parentNode=>{
+    const childrenWrap = parentNode.querySelector(':scope > .children');
+    if(!childrenWrap || childrenWrap.style.display === 'none') return;
+
+    // compute parent point: bottom center of couple element
+    const couple = parentNode.querySelector(':scope > .couple');
+    if(!couple) return;
+    const parentRect = couple.getBoundingClientRect();
+
+    // for each direct child, connect line from parent's bottom center to child's top center
+    const children = Array.from(childrenWrap.children).filter(ch => ch.classList.contains('person-node'));
+    children.forEach(child=>{
+      const childCouple = child.querySelector(':scope > .couple');
+      if(!childCouple) return;
+      const childRect = childCouple.getBoundingClientRect();
+
+      // coordinates relative to svg
+      const x1 = (parentRect.left + parentRect.width/2) - rect.left;
+      const y1 = (parentRect.bottom) - rect.top;
+      const x2 = (childRect.left + childRect.width/2) - rect.left;
+      const y2 = (childRect.top) - rect.top;
+
+      // create a path with slight curve for nicer look
+      const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      const midY = (y1 + y2)/2;
+      const d = `M ${x1} ${y1} C ${x1} ${midY} ${x2} ${midY} ${x2} ${y2}`;
+      path.setAttribute('d', d);
+      path.setAttribute('stroke', '#9ca3af');
+      path.setAttribute('stroke-width', '2');
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke-linecap','round');
+      path.setAttribute('opacity','0.9');
+      svg.appendChild(path);
+    });
+  });
+}
+
+/* redraw on resize/scroll */
+let resizeTimer;
+window.addEventListener('resize', ()=>{ clearTimeout(resizeTimer); resizeTimer = setTimeout(drawAllLines,80); });
+document.getElementById('tree').addEventListener('scroll', ()=>{ requestAnimationFrame(drawAllLines); });
+</script>
     
+
+<!-- Register service worker for PWA offline capability -->
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').catch(()=>{/* fail silently */});
+}
+</script>
 </body>
 </html>

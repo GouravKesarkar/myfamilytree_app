@@ -1,0 +1,122 @@
+{
+    "husband": { "name": "Raghoba Kesarkar", "birth": "1920", "photo": "images/Tim" },
+    "wife": { "name": "Janaki Kesarkar", "birth": "1922", "photo": "images/Mag" },
+    "children": [
+      {
+        "husband": { "name": "Anand Kesarkar", "birth": "1945", "photo": "images/Jake" },
+        "wife": { "name": "Anjali Kesarkar", "birth": "1948", "photo": "images/Taylor" },
+        "children": [
+          {
+            "husband": { "name": "Gourav Kesarkar", "birth": "1978", "photo": "images/Chris" },
+            "wife": { "name": "Radha Kesarkar", "birth": "1975", "photo": "images/Carlos" },
+            "children": [
+              {
+                "name": "Meera Kesarkar",
+                "birth": "2012",
+                "photo": "images/Carrie",
+                "children": []
+              }
+            ]
+          },
+          {
+            "wife": { "name": "Arati Kesarkar", "birth": "1975", "photo": "images/Cullen" },
+            "husband": { "name": "Shivprasad Ajgaonkar", "birth": "1975", "photo": "images/Carlos" },
+            "children": [
+              {
+                "name": "Sparsh Ajgaonkar",
+                "birth": "2002",
+                "photo": "images/Jane",
+                "children": []
+              },
+              {
+                "name": "Soumya Ajgaonkar",
+                "birth": "2002",
+                "photo": "images/Jane",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "husband": { "name": "Srikant Kesarkar", "birth": "1958", "photo": "images/Arjun" },
+        "wife": { "name": "Sunita Kesarkar", "birth": "1960", "photo": "images/Olivia" },
+        "children": [
+          {
+            "husband": { "name": "Siddesh Kesarkar", "birth": "1985", "photo": "images/Steve" },
+            "wife": { "name": "Priyanka Kesarkar", "birth": "1960", "photo": "images/Olivia" },
+            "children": [
+              {
+                "name": "Heera Kesarkar",
+                "birth": "2012",
+                "photo": "images/Anna",
+                "children": []
+              },
+              {
+                "name": "Ansh Kesarkar",
+                "birth": "2012",
+                "photo": "images/Anna",
+                "children": []
+              }
+            ]
+          },
+          {
+            "husband": { "name": "Dada Kesarkar", "birth": "1985", "photo": "images/Steve" },
+            "wife": { "name": "Sushma Kesarkar", "birth": "1960", "photo": "images/Olivia" },
+            "children": [
+              {
+                "name": "Ganesh Kesarkar",
+                "birth": "2012",
+                "photo": "images/Anna",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "husband": { "name": "Nandu Kesarkar", "birth": "1970", "photo": "images/TimY" },
+        "wife": { "name": "Nita Kesarkar", "birth": "1975", "photo": "images/Emma" },
+        "children": [
+            {
+              "name": "Nikita Kesarkar",
+              "birth": "2012",
+              "photo": "images/Anna",
+              "children": []
+            },
+            {
+                "name": "Raunak Kesarkar",
+                "birth": "2012",
+                "photo": "images/Anna",
+                "children": []
+            }
+        ]
+      },
+      {
+        "husband": { "name": "Sanjay Kesarkar", "birth": "1970", "photo": "images/TimY" },
+        "wife": { "name": "Amita Kesarkar", "birth": "1975", "photo": "images/Emma" },
+        "children": [
+            {
+                "husband": { "name": "Omkar Kesarkar", "birth": "1970", "photo": "images/TimY" },
+                "wife": { "name": " Kesarkar", "birth": "1975", "photo": "images/Emma" },
+                "children": [
+                    {
+                        "name": "Ovee Kesarkar",
+                        "birth": "2012",
+                        "photo": "images/Anna",
+                        "children": []
+                        
+                    }
+                ]
+            },
+            {
+                "name": "Sarthak Kesarkar",
+                "birth": "2012",
+                "photo": "images/Anna",
+                "children": []
+            }
+        ]
+      }
+    ]
+  }
+  
