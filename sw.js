@@ -3,26 +3,33 @@ const FILES_TO_CACHE = [
   '/',
   '/index.html',
   '/family.json',
-  '/manifest.json'
-  // add icons if present, e.g. '/icons/icon-192.png'
+  '/manifest.json',
+  "/icon/app-icon.png"
 ];
 
-self.addEventListener('install', evt => {
-  evt.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
-  );
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', evt => {
-  evt.waitUntil(self.clients.claim());
-});
-
-self.addEventListener('fetch', evt => {
-  evt.respondWith(
-    caches.match(evt.request).then(res => res || fetch(evt.request))
-  );
-});
-
+// Install event - cache assets
+self.addEventListener("install", (event) => {
+    event.waitUntil(
+      caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    );
+  });
+  
+  // Activate event - cleanup old caches
+  self.addEventListener("activate", (event) => {
+    event.waitUntil(
+      caches.keys().then((keys) =>
+        Promise.all(keys.map((key) => key !== CACHE_NAME && caches.delete(key)))
+      )
+    );
+  });
+  
+  // Fetch event - serve from cache first
+  self.addEventListener("fetch", (event) => {
+    event.respondWith(
+      caches.match(event.request).then((cachedResponse) => {
+        return cachedResponse || fetch(event.request);
+      })
+    );
+  });
   
   

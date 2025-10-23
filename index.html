@@ -199,6 +199,10 @@
     </div>
     <div class="title" style="flex: 1; text-align: center;">The Family Tree</div>
     <div style="flex:1"></div>
+    <div><button id="installBtn" style="display:none; margin-top:10px;">
+        📲 Install App
+      </button>
+    </div>
   </header>
 
   <main>
@@ -210,6 +214,10 @@
     </div>
     </div>
   </main>
+
+  <footer>
+    <p>📚 My Family Tree | © 2025 GK | All rights reserved</p>
+  </footer>
 
 <script>
 /*
@@ -408,9 +416,28 @@ document.getElementById('tree').addEventListener('scroll', ()=>{ requestAnimatio
 
 <!-- Register service worker for PWA offline capability -->
 <script>
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw.js').catch(()=>{/* fail silently */});
-}
-</script>
+    let deferredPrompt;
+    const installBtn = document.getElementById("installBtn");
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = "block"; // show button
+    });
+
+    installBtn.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log("User response:", outcome);
+      deferredPrompt = null;
+      installBtn.style.display = "none";
+    });
+
+    window.addEventListener("appinstalled", () => {
+      console.log("✅ PWA installed");
+      installBtn.style.display = "none";
+    });
+  </script>
 </body>
 </html>
