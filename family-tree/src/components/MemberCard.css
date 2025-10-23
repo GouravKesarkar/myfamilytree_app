@@ -1,0 +1,14 @@
+.member-card {
+  background: white;
+  border: 3px solid #ccc;
+  border-radius: 20px;
+  padding: 1rem;
+  min-width: 160px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.member-card h3 {
+  margin: 0;
+  color: #2c3e50;
+}
