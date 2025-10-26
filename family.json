@@ -1,14 +1,62 @@
 {
-    "husband": { "name": "Raghoba Kesarkar", "birth": "19XX", "photo": "images/Tim" },
-    "wife": { "name": "Janaki Kesarkar", "birth": "19XX", "photo": "images/Mag" },
+    "husband": { "name": "Raghoba Kesarkar", "birth": "19XX",  "death": "19XX", "photo": "images/Tim" },
+    "wife1": { "name": "Janakis Kesarkar", "birth": "19XX", "death": "19XX", "photo": "images/Mag" },
     "children": [
+      {
+        "husband": { "name": "Shantaram Kesarkar", "birth": "19XX", "death": "19XX", "photo": "images/Jake" },
+        "wife": { "name": "Shakuntala Kesarkar", "birth": "19XX", "photo": "images/Taylor" },
+        "children": [
+          {
+            "husband": { "name": "Shailendar Kesarkar", "birth": "19XX", "photo": "images/Chris" },
+            "wife": { "name": "Vrushali Kesarkar", "birth": "19XX", "photo": "images/vrushali" },
+            "children": [
+              {
+                "name": "Smit Kesarkar",
+                "birth": "19XX",
+                "photo": "images/Carrie",
+                "children": []
+              },
+              {
+                "name": "Aditya Kesarkar",
+                "birth": "19XX",
+                "photo": "images/Carrie",
+                "children": []
+              }
+            ]
+          },
+          {
+            "husband": { "name": "Sangam Kesarkar", "birth": "19XX", "photo": "images/Carlos" },
+            "wife": { "name": "Meena Kesarkar", "birth": "19XX", "photo": "images/Cullen" },
+            "children": [
+              {
+                "name": "Jeet Kesarkar",
+                "birth": "19XX",
+                "photo": "images/Jane",
+                "children": []
+              }
+            ]
+          },
+          {
+            "wife": { "name": "Shailaja Parkar", "birth": "19XX", "photo": "images/Cullen" },
+            "husband": { "name": " Parkar", "birth": "19XX", "photo": "images/Carlos" },
+            "children": [
+              {
+                "name": "Sahil Parkar Kesarkar",
+                "birth": "19XX",
+                "photo": "images/Jane",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
       {
         "husband": { "name": "Anand Kesarkar", "birth": "1954", "photo": "images/Jake" },
         "wife": { "name": "Anjali Kesarkar", "birth": "1960", "photo": "images/Taylor" },
         "children": [
           {
             "husband": { "name": "Gourav Kesarkar", "birth": "1983", "photo": "images/Chris" },
-            "wife": { "name": "Radha Kesarkar", "birth": "1984", "photo": "images/radha.jpg" },
+            "wife": { "name": "Usha(Radha) Chandgadkar (Kesarkar)", "birth": "1984", "photo": "images/radha.jpg" },
             "children": [
               {
                 "name": "Meera Kesarkar",
@@ -19,7 +67,7 @@
             ]
           },
           {
-            "wife": { "name": "Arati Kesarkar", "birth": "1980", "photo": "images/Cullen" },
+            "wife": { "name": "Arati(Shivani) Kesarkar(Ajgaonkar)", "birth": "1980", "photo": "images/Cullen" },
             "husband": { "name": "Shivprasad Ajgaonkar", "birth": "1981", "photo": "images/Carlos" },
             "children": [
               {
