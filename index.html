@@ -352,6 +352,7 @@ fetch('family.json').then(r=>{
 
 function drawAllLines(){
   const svg=document.getElementById('linesSvg');
+  const zoomLevel = parseFloat(document.getElementById('tree').style.transform.match(/scale\((.*?)\)/)?.[1] || 1);
   const tree=document.getElementById('tree');
   const rect=tree.getBoundingClientRect();
   svg.setAttribute('width',rect.width);
@@ -369,10 +370,10 @@ function drawAllLines(){
       const childCouple=child.querySelector(':scope > .couple');
       if(!childCouple)return;
       const childRect=childCouple.getBoundingClientRect();
-      const x1=(parentRect.left+parentRect.width/2)-rect.left;
-      const y1=(parentRect.bottom)-rect.top;
-      const x2=(childRect.left+childRect.width/2)-rect.left;
-      const y2=(childRect.top)-rect.top;
+      const x1 = ((parentRect.left + parentRect.width/2) - rect.left) / zoomLevel;
+      const y1 = ((parentRect.bottom) - rect.top) / zoomLevel;
+      const x2 = ((childRect.left + childRect.width/2) - rect.left) / zoomLevel;
+      const y2 = ((childRect.top) - rect.top) / zoomLevel;
       const midY=(y1+y2)/2;
       const path=document.createElementNS('http://www.w3.org/2000/svg','path');
       path.setAttribute('d',`M ${x1} ${y1} C ${x1} ${midY} ${x2} ${midY} ${x2} ${y2}`);
@@ -389,6 +390,26 @@ function drawAllLines(){
 let resizeTimer;
 window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(drawAllLines,80);});
 document.getElementById('tree').addEventListener('scroll',()=>{requestAnimationFrame(drawAllLines);});
+
+document.getElementById('zoomIn').onclick = () => {
+  zoomLevel = Math.min(zoomLevel + 0.1, 2);
+  updateZoom();
+};
+
+document.getElementById('zoomOut').onclick = () => {
+  zoomLevel = Math.max(zoomLevel - 0.1, 0.5);
+  updateZoom();
+};
+
+function updateZoom() {
+  const tree = document.getElementById('tree');
+  tree.style.transform = `scale(${zoomLevel})`;
+  tree.style.transformOrigin = 'center top';
+
+  // ✅ redraw lines after zoom
+  requestAnimationFrame(drawAllLines);
+}
+
 </script>
 
 <script>
