@@ -43,6 +43,7 @@
         overflow: auto;
         position: relative;
         touch-action: none; /* enables pinch zoom */
+        -webkit-overflow-scrolling: touch;
     }
 
     .scroll-wrap {
@@ -52,6 +53,7 @@
         min-width: max-content;
         transform-origin: center top;
         transition: transform 0.25s ease;
+        touch-action: pan-x pan-y;
     }
 
     .tree-root {
@@ -187,6 +189,7 @@
       .tree-root{ padding:20px; min-width:800px; }
       .person-node{ min-width:140px; }
     }
+
   </style>
 </head>
 <body>
