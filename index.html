@@ -291,7 +291,12 @@ function el(tag, cls='', html=''){
   return d; 
 }
 
-fetch('family.json').then(r=>{
+const urlParams = new URLSearchParams(window.location.search);
+const family = urlParams.get('family') || 'default';
+const dataFile = `${family}.json`;
+
+
+fetch(dataFile).then(r=>{
   if(!r.ok) throw new Error('Could not load family.json.');
   return r.json();
 }).then(data=>{
@@ -450,6 +455,7 @@ window.addEventListener("appinstalled",()=>{
   installBtn.style.display="none";
 });
 </script>
+
 <script>
   document.getElementById('refreshBtn').addEventListener('click', () => {
     location.reload(); // reloads the entire page
