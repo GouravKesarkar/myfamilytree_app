@@ -291,9 +291,16 @@ function el(tag, cls='', html=''){
   return d; 
 }
 
-const urlParams = new URLSearchParams(window.location.search);
-const family = urlParams.get('family') || 'default';
-const dataFile = `${family}.json`;
+// Ask user for their Family ID
+let familyId = prompt("Enter your Family ID :");
+
+// Basic validation
+if (!familyId || familyId.trim().length === 0) {
+  document.getElementById('tree').innerText = "❌ No Family ID entered.";
+} else 
+{
+  familyId = familyId.trim().toUpperCase(); // normalize input
+  const dataFile = `${familyId}.json`;
 
 
 fetch(dataFile).then(r=>{
@@ -371,6 +378,7 @@ fetch(dataFile).then(r=>{
 }).catch(err=>{
   document.getElementById('tree').innerText = 'Error loading family.json — '+err.message;
 });
+}
 
 function drawAllLines(){
   const svg=document.getElementById('linesSvg');
