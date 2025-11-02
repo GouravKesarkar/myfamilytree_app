@@ -240,11 +240,14 @@ let zoomLevel = 1;
 const scrollWrap = document.getElementById('scrollWrap');
 const mainArea = document.getElementById('mainArea');
 
-function setZoom(level){
+function setZoom(level) {
   zoomLevel = Math.min(Math.max(level, 0.4), 2);
-  scrollWrap.style.transform = `scale(${zoomLevel})`;
+  const tree = document.getElementById('tree');
+  tree.style.transform = `scale(${zoomLevel})`;
+  tree.style.transformOrigin = 'center top';
   requestAnimationFrame(drawAllLines);
 }
+
 document.getElementById('zoomIn').onclick = ()=>setZoom(zoomLevel + 0.1);
 document.getElementById('zoomOut').onclick = ()=>setZoom(zoomLevel - 0.1);
 
