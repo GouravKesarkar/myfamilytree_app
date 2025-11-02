@@ -1,0 +1,200 @@
+{
+    "husband": { "name": "Gopal Chandgadkar", "birth": "19XX",  "death": "19XX", "photo": "images/Tim" },
+    "wife1": { "name": "Radhabai Chandgadkar", "birth": "19XX", "death": "19XX", "photo": "images/Mag" },
+    "children": [
+      {
+        "husband": { "name": "XYZ", "birth": "19XX", "death": "19XX", "photo": "images/Jake" },
+        "wife": { "name": "Padmavati(XYZ) Chandgadkar(XYZ)", "birth": "19XX", "photo": "images/Taylor" },
+        "children": [
+          {
+            "husband": { "name": "XYZ", "birth": "19XX", "photo": "images/Chris" },
+            "wife": { "name": "Sunita XYZ", "birth": "19XX", "photo": "images/vrushali" },
+            "children": [
+              {
+                "name": "Ashutosh XYZ",
+                "birth": "19XX",
+                "photo": "images/Carrie",
+                "children": []
+              }
+            ]
+          },
+          {
+            "husband": { "name": "Deepak XYZ", "birth": "19XX", "photo": "images/Carlos" },
+            "wife": { "name": "XYZ", "birth": "19XX", "photo": "images/Cullen" },
+            "children": [
+              {
+                "name": "Chaitanya XYZ",
+                "birth": "19XX",
+                "photo": "images/Jane",
+                "children": []
+              }
+            ]
+          },
+          {
+            "wife": { "name": "Namrata XYZ", "birth": "19XX", "photo": "images/Cullen" },
+            "husband": { "name": " XYZ", "birth": "19XX", "photo": "images/Carlos" },
+            "children": [
+              {
+                "name": "Madhura",
+                "birth": "19XX",
+                "photo": "images/Jane",
+                "children": []
+              },
+              {
+                "name": "Devashree",
+                "birth": "19XX",
+                "photo": "images/Jane",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "husband": { "name": "Mohan Chandgadkar", "birth": "19XX", "death": "19XX", "photo": "images/Jake" },
+        "wife": { "name": "XYZ", "birth": "19XX", "photo": "images/Taylor" },
+        "children": [
+          {
+            "husband": { "name": "XYZ", "birth": "19XX", "photo": "images/Chris" },
+            "wife": { "name": "Teju Chandgadkar", "birth": "19XX", "photo": "images/vrushali" }
+          }
+        ]
+      },
+           
+  
+
+      {
+        "husband": { "name": "Vijay Chandgadkar", "birth": "1954", "photo": "images/Jake" },
+        "wife": { "name": "XYZ Chandgadkar", "birth": "1960", "photo": "images/Taylor" },
+        "children": [
+          {
+            "husband": { "name": "Amit Chandgadkar", "birth": "1983", "photo": "images/Chris" }
+          },
+          {
+            "husband": { "name": "Abhijit Chandgadkar", "birth": "1981", "photo": "images/Carlos" },
+            "wife": { "name": "XYZ", "birth": "1980", "photo": "images/Cullen" }
+            
+          }
+        ]
+      },
+
+      {
+        "husband": { "name": "Ashok Chandgadkar", "birth": "19XX", "death": "19XX", "photo": "images/Jake" },
+        "wife": { "name": "Ashwini Chandgadkar", "birth": "19XX", "photo": "images/Taylor" },
+        "children": [
+          {
+            "husband": { "name": "Abhay Chandgadkar", "birth": "19XX", "photo": "images/Chris" }
+          }
+        ]
+      },
+
+
+      {
+        "husband": { "name": "Arun Chandgadkar", "birth": "19XX", "photo": "images/Arjun" },
+        "wife": { "name": "Sudha (Malondkar)Chandgadkar", "birth": "19XX", "photo": "images/Olivia" },
+        "children": [
+          {
+            "husband": { "name": "Sujit Chandgadkar", "birth": "1984", "photo": "images/Steve" },
+            "wife": { "name": "Prajakta Chandgadkar", "birth": "19XX", "photo": "images/Olivia" },
+            "children": [
+              {
+                "name": "Urvi Chandgadkar",
+                "birth": "2019",
+                "photo": "images/Anna",
+                "children": []
+              },
+              {
+                "name": "Tanvi Chandgadkar",
+                "birth": "20XX",
+                "photo": "images/Anna",
+                "children": []
+              }
+            ]
+          },
+          {
+            "wife": { "name": "Usha(Radha) Chandgadkar(Kesarkar)", "birth": "19XX", "photo": "images/Olivia" },
+            "husband": { "name": "Gourav Kesarkar", "birth": "19XX", "photo": "images/Steve" },
+            "children": [
+              {
+                "name": "Meera Kesarkar",
+                "birth": "2012",
+                "photo": "images/Anna",
+                "children": []
+              }
+            ]
+          },
+          {
+            "wife": { "name": "Anuja Chandgadkar(Naik)", "birth": "19XX", "photo": "images/Olivia" },
+            "husband": { "name": "Amey Naik", "birth": "19XX", "photo": "images/Steve" },
+            "children": [
+              {
+                "name": "Aryah Naik",
+                "birth": "2024",
+                "photo": "images/Anna",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "wife": { "name": "Vinodini Chandgadkar", "birth": "19XX", "photo": "images/TimY" },
+        "husband": { "name": "Vithu Malondkar", "birth": "19XX", "photo": "images/Emma" }
+      },
+      {
+        "husband": { "name": "Shrikant Chandgadkar", "birth": "19XX", "photo": "images/TimY" },
+        "wife": { "name": "Swati Chandgadkar", "birth": "19XX", "photo": "images/Emma" },
+        "children": [
+            {
+                "wife": { "name": "Shilpa Chandgadkar", "birth": "19XX", "photo": "images/TimY" },
+                "husband": { "name": " XYZ", "birth": "19XX", "photo": "images/Emma" },
+                "children": [
+                    {
+                        "name": "XYZ",
+                        "birth": "20XX",
+                        "photo": "images/Anna",
+                        "children": []
+                        
+                    }
+                ]
+            },
+            {
+                "name": "Sachin Chandgadkar",
+                "birth": "20XX",
+                "photo": "images/Anna",
+                "children": []
+            },
+            {
+              "name": "Darshana Chandgadkar",
+              "birth": "20XX",
+              "photo": "images/Anna",
+              "children": []
+          }
+        ]
+      },
+      {
+        "wife": { "name": "Mangal Chandgadkar", "birth": "19XX", "photo": "images/TimY" },
+        "husband": { "name": "Harish Patankar", "birth": "19XX", "photo": "images/Emma" },
+        "children": [
+            {
+                "wife": { "name": "Pranali Chandgadkar", "birth": "19XX", "photo": "images/TimY" },
+                "husband": { "name": " XYZ", "birth": "19XX", "photo": "images/Emma" },
+                "children": [
+                    {
+                        "name": "Parth",
+                        "birth": "20XX",
+                        "photo": "images/Anna",
+                        "children": []
+                        
+                    }
+                ]
+            }
+        ]
+      },
+      {
+        "wife": { "name": "Baby Chandgadkar", "birth": "19XX", "photo": "images/TimY" }
+      }
+    ]
+  }
+  
